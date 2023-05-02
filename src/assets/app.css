@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap');
+
+html,
+body {
+    scroll-behavior: smooth;
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar-item-active {
+    background-color: #fc466b1a !important;
+}
+
+div#root {
+    height: auto !important;
+    min-height: 100%;
+}
