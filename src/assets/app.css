@@ -16,6 +16,11 @@ div#root {
     font-size: 3.5rem;
 }
 
+.navbar-menu{
+    background-color: #fff;
+    box-shadow: unset !important;
+}
+
 /*Buttons*/
 .button.btn-nav{
     border: 2px solid var(--pri);
@@ -35,8 +40,8 @@ div#root {
 
 /*Elements*/
 .hero {
-    height: 100vh;
-    background-color: #fefefe !important;
+    min-height: 100vh;
+    background-color: #f7f7fc !important;
 }
 
 
@@ -45,24 +50,38 @@ div#root {
     padding: 0 !important;
 }
 
-.hero-subcontent{
-    padding: 20px 0;
+.section-content{
+    padding: var(--big-pad) 0;
 }
 
 /*Texts*/
 .content{
     font-size: 1.2rem;
 }
-
+.text-tertiary{
+    color: var(--ter) !important;
+}
 .text-primary{
     color: var(--pri) !important;
 }
 .text-gray{
     color: #757683;
 }
+
+/*Media Queries*/
+@media screen and (max-width: 1000px) {
+    .home-title {
+        font-size: 2.5rem;
+    }
+    .section-content{
+        padding: var(--small-pad) 0 !important;
+    }
+}
 :root{
     --pri : #001E9A;
     --sec: #02A5FE;
     --pri-dark: #282C4B;
     --ter: #F17216;
+    --small-pad: 10px;
+    --big-pad: 20px;
 }
