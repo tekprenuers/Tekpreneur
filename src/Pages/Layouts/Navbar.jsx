@@ -65,30 +65,38 @@ export default function Navbar() {
             <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="./">
-                        Oshare
+                        <img src="/nav-blue.png" />
                     </a>
 
-                    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="oshareNavbar" onClick={(event) => toggleMobileNav(event)}>
+                    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="NavContent" onClick={(event) => toggleMobileNav(event)}>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                     </a>
                 </div>
 
-                <div id="oshareNavbar" className="navbar-menu">
-                    <div className="navbar-start">
+                <div id="NavContent" className="navbar-menu">
+                    <div className="navbar-end">
                         <Link onClick={unToggleMobileNav} to="/" className="navbar-item">
-                            Home
+                            Services
                         </Link>
                         <Link onClick={unToggleMobileNav} to="/how-to-use" className="navbar-item">
-                            How to use
+                            Resources
                         </Link>
                         <Link onClick={unToggleMobileNav} to="/links" className="navbar-item">
-                            My Links
+                            Company
+                        </Link>
+                        <Link onClick={unToggleMobileNav} to="/links" className="navbar-item">
+                            Blog
                         </Link>
                         <Link onClick={unToggleMobileNav} to="/contact" className="navbar-item">
                             Contact us
                         </Link>
+                        <div className="navbar-item">
+                            <a href="" className="button is-rounded btn-nav">
+                                Let&apos;s Talk
+                            </a>
+                        </div>
                     </div>
                 </div>
             </nav>
