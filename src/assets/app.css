@@ -43,10 +43,22 @@ div#root {
     min-height: 100vh;
     background-color: #f7f7fc !important;
 }
-
-
+.ico-purple{
+    --fa-primary-color: #593ffb;
+    --fa-secondary-color: #593ffb;
+}
+.ico-green{
+    --fa-primary-color: #80cc28; 
+    --fa-primary-opacity: 0.4; 
+    --fa-secondary-color: #80cc28; 
+    --fa-secondary-opacity: 1;
+}
+.ico-red{
+    --fa-primary-color: #f9406c;
+    --fa-secondary-color: #f9406c;
+}
 /*Utilities*/
-.p-none{
+.p-0{
     padding: 0 !important;
 }
 
