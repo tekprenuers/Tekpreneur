@@ -33,6 +33,13 @@ div#root {
     color: #fff !important;
     padding: 25px 40px;
 }
+.button.btn-cta.is-light{
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid #fff;
+    background-color: #fff;
+    color: var(--pri) !important;
+    padding: 25px 40px;
+}
 .button.btn-nav:hover{
     background-color: var(--pri);
     color: #fff !important;
@@ -57,15 +64,39 @@ div#root {
     --fa-primary-color: #f9406c;
     --fa-secondary-color: #f9406c;
 }
+img.why-woman{
+    width: 350px;
+    position: relative;
+}
+.list-flex{
+    font-size:1.3rem;
+}
+.list-flex{
+    display: inline-flex;
+    gap: 20px;
+    align-items: center;
+}
+
 /*Utilities*/
 .p-0{
     padding: 0 !important;
 }
-
+.fw-bold{
+    font-weight: bold !important;
+}
 .section-content{
     padding: var(--big-pad) 0;
 }
-
+.bg-pri-dark{
+    background-color: var(--pri-dark) !important;
+    color: #fff !important;
+}
+.fs-one-half{
+    font-size: 1.5rem;
+}
+.space-2x{
+    letter-spacing: 2px;
+}
 /*Texts*/
 .content{
     font-size: 1.2rem;
@@ -79,7 +110,9 @@ div#root {
 .text-gray{
     color: #757683;
 }
-
+.text-ash{
+    color: var(--ash) !important;
+}
 /*Media Queries*/
 @media screen and (max-width: 1000px) {
     .home-title {
@@ -96,4 +129,5 @@ div#root {
     --ter: #F17216;
     --small-pad: 10px;
     --big-pad: 20px;
+    --ash: #ced1e6;
 }
