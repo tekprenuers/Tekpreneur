@@ -1,4 +1,6 @@
 // import React from "react";
+import { octaValidate } from "octavalidate-reactjs"
+import { toast } from "react-toastify"
 // import { Helmet } from "react-helmet";
 
 export default function Home() {
@@ -98,6 +100,38 @@ export default function Home() {
                         </section>
                     </div>
                 </div>
+            </section>
+            <section className="section is-medium">
+            <div className="columns is-sflex-direction-row-reverse">
+                        <div className="column text-center is-align-self-center">
+                            <img src="/hero-man.png" />
+                        </div>
+                        <div className="column is-align-self-center">
+                            <section className="section-content">
+                                <p className="text-tertiary mb-3">CONTACT US</p>
+                                <h3 className="title is-3 fw-bolder">Let&apos;s Collaborate Now!</h3>
+                            </section>
+                            <section className="section-content">
+                            <form id="form_contact">
+                                <div className="field">
+                                    <label className="label">Full Name</label>
+                                    <input className="input" placeholder="Enter your name" id="inp_name" octavalidate="R,NAME" />
+                                </div>
+                                <div className="field">
+                                    <label className="label">Email Address</label>
+                                    <input className="input" placeholder="Enter your email address" id="inp_email" octavalidate="R,EMAIL" />
+                                </div>
+                                <div className="field">
+                                    <label className="label">Message</label>
+                                    <textarea className="textarea" placeholder="Enter your message" id="inp_msg" octavalidate="R,TEXT"></textarea>
+                                </div>
+                                <div className="field">
+                                    <button className="btn-cta button is-rounded fw-bold space-1x">Send Message</button>
+                                </div>
+                            </form>
+                            </section>
+                        </div>
+                    </div>
             </section>
         </main>
 

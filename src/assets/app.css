@@ -32,6 +32,7 @@ div#root {
     background-color: var(--pri);
     color: #fff !important;
     padding: 25px 40px;
+    font-family: inherit !important;
 }
 .button.btn-cta.is-light{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -76,13 +77,23 @@ img.why-woman{
     gap: 20px;
     align-items: center;
 }
-
+.input, .textarea{
+    border: unset !important;
+    background-color: #fff8f8 !important;
+    box-shadow: unset !important;
+}
+.field:not(:last-child){
+    margin-bottom: 2rem;
+}
 /*Utilities*/
 .p-0{
     padding: 0 !important;
 }
 .fw-bold{
     font-weight: bold !important;
+}
+.fw-bolder{
+    font-weight: 900 !important;
 }
 .section-content{
     padding: var(--big-pad) 0;
@@ -93,6 +104,9 @@ img.why-woman{
 }
 .fs-one-half{
     font-size: 1.5rem;
+}
+.space-1x{
+    letter-spacing: 1px;
 }
 .space-2x{
     letter-spacing: 2px;
