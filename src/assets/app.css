@@ -16,17 +16,17 @@ div#root {
     font-size: 3.5rem;
 }
 
-.navbar-menu{
+.navbar-menu {
     background-color: #fff;
     box-shadow: unset !important;
 }
 
 /*Buttons*/
-.button.btn-nav{
+.button.btn-nav {
     border: 2px solid var(--pri);
 }
 
-.button.btn-cta{
+.button.btn-cta {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 2px solid var(--pri);
     background-color: var(--pri);
@@ -34,14 +34,16 @@ div#root {
     padding: 25px 40px;
     font-family: inherit !important;
 }
-.button.btn-cta.is-light{
+
+.button.btn-cta.is-light {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 2px solid #fff;
     background-color: #fff;
     color: var(--pri) !important;
     padding: 25px 40px;
 }
-.button.btn-nav:hover{
+
+.button.btn-nav:hover {
     background-color: var(--pri);
     color: #fff !important;
 }
@@ -51,93 +53,129 @@ div#root {
     min-height: 100vh;
     background-color: #f7f7fc !important;
 }
-.ico-purple{
+
+.ico-purple {
     --fa-primary-color: #593ffb;
     --fa-secondary-color: #593ffb;
 }
-.ico-green{
-    --fa-primary-color: #80cc28; 
-    --fa-primary-opacity: 0.4; 
-    --fa-secondary-color: #80cc28; 
+
+.ico-green {
+    --fa-primary-color: #80cc28;
+    --fa-primary-opacity: 0.4;
+    --fa-secondary-color: #80cc28;
     --fa-secondary-opacity: 1;
 }
-.ico-red{
+
+.ico-red {
     --fa-primary-color: #f9406c;
     --fa-secondary-color: #f9406c;
 }
-img.why-woman{
+
+img.why-woman {
     width: 350px;
     position: relative;
 }
-.list-flex{
-    font-size:1.3rem;
+
+.list-flex {
+    font-size: 1.3rem;
 }
-.list-flex{
+
+.list-flex {
     display: inline-flex;
     gap: 20px;
     align-items: center;
 }
-.input, .textarea{
-    border: unset !important;
+
+.input,
+.textarea {
+    border: 1px solid var(--pri-dark) !important;
     background-color: #fff8f8 !important;
     box-shadow: unset !important;
 }
-.field:not(:last-child){
+
+.field:not(:last-child) {
     margin-bottom: 2rem;
 }
+
+.footer {
+    background-color: var(--pri-dark);
+    padding: 1.5rem 1.5rem;
+    color: #fff;
+}
+
 /*Utilities*/
-.p-0{
+.p-0 {
     padding: 0 !important;
 }
-.fw-bold{
+
+.fw-bold {
     font-weight: bold !important;
 }
-.fw-bolder{
+
+.fw-bolder {
     font-weight: 900 !important;
 }
-.section-content{
+
+.section-content {
     padding: var(--big-pad) 0;
 }
-.bg-pri-dark{
+
+.bg-pri-dark {
     background-color: var(--pri-dark) !important;
     color: #fff !important;
 }
-.fs-one-half{
+
+.fs-one-half {
     font-size: 1.5rem;
 }
-.space-1x{
+
+.space-1x {
     letter-spacing: 1px;
 }
-.space-2x{
+
+.space-2x {
     letter-spacing: 2px;
 }
+
+footer a:has(i.social){
+    color: inherit !important;
+    font-size: 1.5rem;
+}
+
 /*Texts*/
-.content{
+.content {
     font-size: 1.2rem;
 }
-.text-tertiary{
+
+.text-tertiary {
     color: var(--ter) !important;
 }
-.text-primary{
+
+.text-primary {
     color: var(--pri) !important;
 }
-.text-gray{
+
+.text-gray {
     color: #757683;
 }
-.text-ash{
+
+.text-ash {
     color: var(--ash) !important;
 }
+
 /*Media Queries*/
 @media screen and (max-width: 1000px) {
     .home-title {
         font-size: 2.5rem;
     }
-    .section-content{
+
+    .section-content {
         padding: var(--small-pad) 0 !important;
     }
 }
-:root{
-    --pri : #001E9A;
+
+:root {
+    --pri: #001E9A;
     --sec: #02A5FE;
     --pri-dark: #282C4B;
     --ter: #F17216;

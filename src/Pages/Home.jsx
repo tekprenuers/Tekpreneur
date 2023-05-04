@@ -1,10 +1,22 @@
+/* eslint-disable react/no-unknown-property */
 // import React from "react";
 import { octaValidate } from "octavalidate-reactjs"
 import { toast } from "react-toastify"
 // import { Helmet } from "react-helmet";
 
 export default function Home() {
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // e.target.classList.toggle("is-loading");
+        const ov = new octaValidate('form_contact', {
+            strictMode: true
+        })
+        if (ov.validate()) {
+            alert("Correct guy!")
+        } else {
+            toast.error("Form validation failed!");
+        }
+    }
     return (
         <main>
             <section className="hero">
@@ -18,10 +30,10 @@ export default function Home() {
                                 <h1 className="title home-title">Promote Your Business With <span className="text-primary">Tech</span></h1>
                             </section>
                             <section className="section-content">
-                                <p className="content text-gray">Support small business and join the nationwide movement to encourage commercial support for the millions of minority owned businesses helping world economy.</p>
+                                <p className="content text-gray">Support small business and join the nation-wide movement to encourage commercial support for the millions of minority owned businesses helping world economy.</p>
                             </section>
                             <section className="section-content">
-                                <a href="/" className="button btn-cta is-rounded">Get Started</a>
+                                <a href="/" className="button btn-cta is-rounded fw-bold">Get A Quote</a>
                             </section>
                         </div>
                     </div>
@@ -77,42 +89,42 @@ export default function Home() {
                         </section>
                         <section className="section-content">
                             <div className="mb-3">
-                            <p className="list-flex">
-                                <span className="icon">
-                                    <i className="fs-one-half fa-duotone fa-circle-check"></i>
-                                </span><span className="text-ash">120% Increase in Productivity</span></p>
+                                <p className="list-flex">
+                                    <span className="icon">
+                                        <i className="fs-one-half fa-duotone fa-circle-check"></i>
+                                    </span><span className="text-ash">120% Increase in Productivity</span></p>
                             </div>
                             <div className="mb-3">
-                            <p className="list-flex">
-                                <span className="icon">
-                                    <i className="fs-one-half fa-duotone fa-circle-check"></i>
-                                </span><span className="text-ash">Development of Technical Models</span></p>
+                                <p className="list-flex">
+                                    <span className="icon">
+                                        <i className="fs-one-half fa-duotone fa-circle-check"></i>
+                                    </span><span className="text-ash">Development of Technical Models</span></p>
                             </div>
                             <div className="mb-3">
-                            <p className="list-flex">
-                                <span className="icon">
-                                    <i className="fs-one-half fa-duotone fa-circle-check"></i>
-                                </span><span className="text-ash">Better Customer Experience</span></p>
+                                <p className="list-flex">
+                                    <span className="icon">
+                                        <i className="fs-one-half fa-duotone fa-circle-check"></i>
+                                    </span><span className="text-ash">Better Customer Experience</span></p>
                             </div>
                             <section className="section-content">
-                                <a href="/" className="button btn-cta is-light fw-bold is-rounded">Get Started</a>
+                                <a href="/" className="button btn-cta is-light fw-bold is-rounded">Get A Quote</a>
                             </section>
                         </section>
                     </div>
                 </div>
             </section>
             <section className="section is-medium">
-            <div className="columns is-sflex-direction-row-reverse">
-                        <div className="column text-center is-align-self-center">
-                            <img src="/hero-man.png" />
-                        </div>
-                        <div className="column is-align-self-center">
-                            <section className="section-content">
-                                <p className="text-tertiary mb-3">CONTACT US</p>
-                                <h3 className="title is-3 fw-bolder">Let&apos;s Collaborate Now!</h3>
-                            </section>
-                            <section className="section-content">
-                            <form id="form_contact">
+                <div className="columns is-sflex-direction-row-reverse">
+                    <div className="column text-center is-align-self-center">
+                        <img src="/hero-man.png" />
+                    </div>
+                    <div className="column is-align-self-center">
+                        <section className="section-content">
+                            <p className="text-tertiary mb-3">CONTACT US</p>
+                            <h3 className="title is-3 fw-bolder">Let&apos;s Collaborate Now!</h3>
+                        </section>
+                        <section className="section-content">
+                            <form id="form_contact" method="post" onSubmit={handleSubmit}>
                                 <div className="field">
                                     <label className="label">Full Name</label>
                                     <input className="input" placeholder="Enter your name" id="inp_name" octavalidate="R,NAME" />
@@ -129,11 +141,10 @@ export default function Home() {
                                     <button className="btn-cta button is-rounded fw-bold space-1x">Send Message</button>
                                 </div>
                             </form>
-                            </section>
-                        </div>
+                        </section>
                     </div>
+                </div>
             </section>
         </main>
-
     )
 }
