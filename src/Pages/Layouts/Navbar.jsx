@@ -24,14 +24,6 @@ export default function Navbar() {
                 document.querySelectorAll('a').forEach(elem => {
                     elem.classList.remove('navbar-item-active')
                 })
-                //console.log(window.location.origin + location.pathname + location.search)
-                //set the active class on the element with the current url pathname
-                // document.querySelectorAll('a[href]').forEach(el => {
-                //     const res = el.href.match(new RegExp(location.pathname, 'i'));
-                //     if(res && res.length){
-                //         return el.classList.add('navbar-item-active')
-                //     }
-                // })
                 const elem = (location.pathname && !location.search) ? document.querySelector(
                     `a[href="${location.pathname}"]`
                 ) : document.querySelector(
@@ -77,23 +69,23 @@ export default function Navbar() {
 
                 <div id="NavContent" className="navbar-menu">
                     <div className="navbar-end">
-                        <Link onClick={unToggleMobileNav} to="/" className="navbar-item">
+                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
                             Services
                         </Link>
-                        <Link onClick={unToggleMobileNav} to="/how-to-use" className="navbar-item">
+                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
                             Resources
                         </Link>
-                        <Link onClick={unToggleMobileNav} to="/links" className="navbar-item">
+                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
                             Company
                         </Link>
-                        <Link onClick={unToggleMobileNav} to="/links" className="navbar-item">
+                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
                             Blog
                         </Link>
-                        <Link onClick={unToggleMobileNav} to="/contact" className="navbar-item">
+                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
                             Contact us
                         </Link>
                         <div className="navbar-item">
-                            <a href="" className="button is-rounded btn-nav">
+                            <a href="#" className="button is-rounded btn-nav">
                                 Let&apos;s Talk
                             </a>
                         </div>

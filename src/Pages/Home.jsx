@@ -12,7 +12,7 @@ export default function Home() {
             strictMode: true
         })
         if (ov.validate()) {
-            alert("Correct guy!")
+            toast.info("Cannot submit in preview mode 😔")
         } else {
             toast.error("Form validation failed!");
         }
@@ -33,7 +33,7 @@ export default function Home() {
                                 <p className="content text-gray">Support small business and join the nation-wide movement to encourage commercial support for the millions of minority owned businesses helping world economy.</p>
                             </section>
                             <section className="section-content">
-                                <a href="/" className="button btn-cta is-rounded fw-bold">Get A Quote</a>
+                                <a href="#" className="button btn-cta is-rounded fw-bold">Get A Quote</a>
                             </section>
                         </div>
                     </div>
@@ -113,7 +113,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="section is-medium">
+            <section className="section">
                 <div className="columns is-sflex-direction-row-reverse">
                     <div className="column text-center is-align-self-center">
                         <img src="/hero-man.png" />
