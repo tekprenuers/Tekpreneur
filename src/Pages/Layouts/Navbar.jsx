@@ -69,17 +69,11 @@ export default function Navbar() {
 
                 <div id="NavContent" className="navbar-menu">
                     <div className="navbar-end">
-                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
+                        <Link onClick={unToggleMobileNav} to=".#" className="navbar-item">
                             Services
                         </Link>
                         <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
-                            Resources
-                        </Link>
-                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
-                            Company
-                        </Link>
-                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
-                            Blog
+                            Get a Quote
                         </Link>
                         <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
                             Contact us
