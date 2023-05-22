@@ -29,13 +29,16 @@ export default function Home() {
                 mode : "cors",
                 body : fd
             })
-            .then((data) => {
-                if(data.success){
-                    toast.success(data.message);
+            .then(res => res.json())
+            .then((res) => {
+                if(res.success){
+                    toast.success(res.data.message);
                     //add innertext
                     btn.innerText = "Sent!";
+                    //remove loading class
+                    btn.classList.remove('is-loading');
                 }else{
-                    toast.error(data.message);
+                    toast.error(res.data.message);
                     //add innertext
                     btn.innerText = "Try again";
                     //remove loading class
@@ -173,15 +176,15 @@ export default function Home() {
                             <form id="form_contact" method="post" onSubmit={handleSubmit}>
                                 <div className="field">
                                     <label className="label">Full Name</label>
-                                    <input className="input" placeholder="Enter your name" id="inp_name" octavalidate="R,NAME" />
+                                    <input name="name" className="input" placeholder="Enter your name" id="inp_name" octavalidate="R,NAME" />
                                 </div>
                                 <div className="field">
                                     <label className="label">Email Address</label>
-                                    <input className="input" placeholder="Enter your email address" id="inp_email" octavalidate="R,EMAIL" />
+                                    <input className="input" name="email" placeholder="Enter your email address" id="inp_email" octavalidate="R,EMAIL" />
                                 </div>
                                 <div className="field">
                                     <label className="label">Message</label>
-                                    <textarea className="textarea" placeholder="Enter your message" id="inp_msg" octavalidate="R,TEXT"></textarea>
+                                    <textarea name="body" className="textarea" placeholder="Enter your message" id="inp_msg" octavalidate="R,TEXT"></textarea>
                                 </div>
                                 <div className="field">
                                     <button form="form_contact" className="btn-cta button is-rounded fw-bold space-1x">Send Message</button>
