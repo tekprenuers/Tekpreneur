@@ -5,16 +5,62 @@ import { toast } from "react-toastify"
 // import { Helmet } from "react-helmet";
 
 export default function Home() {
+
     const handleSubmit = (e) => {
+        const btn = e.target.querySelector('button[form='+e.target.id+']');
+        //remove innertext
+        btn.innerText = "";
+        //set loading class
+        btn.classList.add('is-loading');
+        //disable the button
+        btn.setAttribute('disabled', 'disabled');
+        //prevent the page from reloading
         e.preventDefault();
         // e.target.classList.toggle("is-loading");
-        const ov = new octaValidate('form_contact', {
+        const ov = new octaValidate(e.target.id, {
             strictMode: true
         })
         if (ov.validate()) {
-            toast.info("Cannot submit in preview mode 😔")
+            //init form data
+            const fd = new FormData(e.target);
+            //init fetch
+            fetch("https://server.thetekpreneurs.com/sendMail.php", {
+                method : "post",
+                mode : "cors",
+                body : fd
+            })
+            .then((data) => {
+                if(data.success){
+                    toast.success(data.message);
+                    //add innertext
+                    btn.innerText = "Sent!";
+                }else{
+                    toast.error(data.message);
+                    //add innertext
+                    btn.innerText = "Try again";
+                    //remove loading class
+                    btn.classList.remove('is-loading');
+                    //remove attribute
+                    btn.removeAttribute('disabled');
+                }
+            }).catch((err) => {
+                console.log(err);
+                toast.error("Please check your network connection and try again");
+                 //add innertext
+                btn.innerText = "Try again";
+                //remove loading class
+                btn.classList.remove('is-loading');
+                //remove attribute
+                btn.removeAttribute('disabled');
+            })
         } else {
             toast.error("Form validation failed!");
+             //add innertext
+            btn.innerText = "Try again";
+            //remove loading class
+            btn.classList.remove('is-loading');
+            //remove attribute
+            btn.removeAttribute('disabled');
         }
     }
     return (
@@ -138,7 +184,7 @@ export default function Home() {
                                     <textarea className="textarea" placeholder="Enter your message" id="inp_msg" octavalidate="R,TEXT"></textarea>
                                 </div>
                                 <div className="field">
-                                    <button className="btn-cta button is-rounded fw-bold space-1x">Send Message</button>
+                                    <button form="form_contact" className="btn-cta button is-rounded fw-bold space-1x">Send Message</button>
                                 </div>
                             </form>
                         </section>
