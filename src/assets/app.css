@@ -24,6 +24,7 @@ div#root {
 /*Buttons*/
 .button.btn-nav {
     border: 2px solid var(--pri);
+    color: var(--pri) !important;
 }
 
 .button.btn-cta {
@@ -104,6 +105,10 @@ img.why-woman {
 }
 
 /*Utilities*/
+.d-none{
+    display: none;
+}
+
 .p-0 {
     padding: 0 !important;
 }
@@ -125,6 +130,11 @@ img.why-woman {
     color: #fff !important;
 }
 
+.bg-sec{
+    background-color: var(--sec) !important;
+    color: #fff !important;
+}
+
 .fs-one-half {
     font-size: 1.5rem;
 }
@@ -137,9 +147,17 @@ img.why-woman {
     letter-spacing: 2px;
 }
 
+.mx-350{
+    max-width: 350px !important;
+}
+
 footer a:has(i.social){
     color: inherit !important;
     font-size: 1.5rem;
+}
+
+.is-gray{
+    background-color: #f7f7fc !important;
 }
 
 /*Texts*/

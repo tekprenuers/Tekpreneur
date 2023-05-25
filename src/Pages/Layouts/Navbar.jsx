@@ -1,4 +1,4 @@
-import { Outlet, Link,  useLocation } from "react-router-dom";
+import { Outlet,  useLocation } from "react-router-dom";
 import React from 'react'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -11,10 +11,10 @@ export default function Navbar() {
         document.querySelector('.navbar-burger')?.classList.toggle('is-active');
         document.querySelector('.navbar-menu')?.classList.toggle('is-active');
     }
-    const unToggleMobileNav = () => {
-        document.querySelector('.navbar-burger')?.classList.remove('is-active');
-        document.querySelector('.navbar-menu')?.classList.remove('is-active');
-    }
+    // const unToggleMobileNav = () => {
+    //     document.querySelector('.navbar-burger')?.classList.remove('is-active');
+    //     document.querySelector('.navbar-menu')?.classList.remove('is-active');
+    // }
     //check for changes in the variable
     React.useEffect(() => {
         if (location) {
@@ -69,18 +69,9 @@ export default function Navbar() {
 
                 <div id="NavContent" className="navbar-menu">
                     <div className="navbar-end">
-                        <Link onClick={unToggleMobileNav} to=".#" className="navbar-item">
-                            Services
-                        </Link>
-                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
-                            Get a Quote
-                        </Link>
-                        <Link onClick={unToggleMobileNav} to="#" className="navbar-item">
-                            Contact us
-                        </Link>
                         <div className="navbar-item">
-                            <a href="#" className="button is-rounded btn-nav">
-                                Let&apos;s Talk
+                            <a href="/quote" className="button is-rounded btn-nav">
+                                Get A Quote
                             </a>
                         </div>
                     </div>

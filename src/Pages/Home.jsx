@@ -71,7 +71,7 @@ export default function Home() {
             <section className="hero">
                 <div className="hero-body p-0">
                     <div className="container is-fluid columns is-flex-direction-row-reverse" style={{ top: '2%' }}>
-                        <div className="column text-center">
+                        <div className="column has-text-centered">
                             <img src="/hero-man.png" />
                         </div>
                         <div className="column is-align-self-center">
@@ -82,7 +82,7 @@ export default function Home() {
                                 <p className="content text-gray">Support small business and join the nation-wide movement to encourage commercial support for the millions of minority owned businesses helping world economy.</p>
                             </section>
                             <section className="section-content">
-                                <a href="#" className="button btn-cta is-rounded fw-bold">Get A Quote</a>
+                                <a href="/quote" className="button btn-cta is-rounded fw-bold">Get A Quote</a>
                             </section>
                         </div>
                     </div>
@@ -126,9 +126,9 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="section bg-pri-dark">
+            <section className="container is-fluid bg-pri-dark">
                 <div className="columns is-flex-direction-arow-reverse">
-                    <div className="column text-center">
+                    <div className="column has-text-centered">
                         <img className="why-woman" src="/why-woman.png" />
                     </div>
                     <div className="column is-align-self-center">
@@ -156,7 +156,7 @@ export default function Home() {
                                     </span><span className="text-ash">Better Customer Experience</span></p>
                             </div>
                             <section className="section-content">
-                                <a href="/" className="button btn-cta is-light fw-bold is-rounded">Get A Quote</a>
+                                <a href="/quote" className="button btn-cta is-light fw-bold is-rounded">Get A Quote</a>
                             </section>
                         </section>
                     </div>
@@ -164,8 +164,8 @@ export default function Home() {
             </section>
             <section className="section">
                 <div className="columns is-sflex-direction-row-reverse">
-                    <div className="column text-center is-align-self-center">
-                        <img src="/hero-man.png" />
+                    <div className="column has-text-centered is-align-self-center">
+                        <img className="mx-350" src="/hero-man.png" />
                     </div>
                     <div className="column is-align-self-center">
                         <section className="section-content">
@@ -191,6 +191,25 @@ export default function Home() {
                                 </div>
                             </form>
                         </section>
+                    </div>
+                </div>
+            </section>
+            <section className="section is-gray">
+                <div className="columns is-flex-direction-row-reverse">
+                    <div className="column has-text-centered">
+                        <img src="/woman_how.png" />
+                    </div>
+                    <div className="column is-align-self-center">
+                        <section className="section-content">
+                            <p className="text-tertiary mb-3">GET A QUOTE</p>
+                            <h3 className="title is-3 space-2x">Not Sure What You Want?</h3>
+                        </section>
+                        <section className="section-content">
+                            <p>Are you feeling unsure about what exactly you need? Don&apos;t worry, we&apos;ve got you covered! Our team of experts is here to help you navigate through the possibilities and find the perfect solution tailored to your requirements.</p>
+                        </section>
+                            <section className="section-content">
+                                <a href="/quote" className="button btn-cta fw-bold is-rounded">Get A Quote</a>
+                            </section>
                     </div>
                 </div>
             </section>
