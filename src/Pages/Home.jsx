@@ -163,7 +163,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <div className="container is-fluid">
+            <div className="container is-fluid p-2">
                 <section className="section px-0">
                     <div className="container p-4 has-border mx-700 radius-20">
                         <section className="section-content">

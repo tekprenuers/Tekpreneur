@@ -17,17 +17,17 @@ export default function Quote() {
             if (section > 1) return setSection(section - 1)
         }
         return <div className="field">
-            <div className="is-flex" style={{ "justify-content": "space-between" }}>
+            <div className="is-flex" style={{ justifyContent: "space-between" }}>
                 <div className="has-text-left">
                     {
                         (section > 1) &&
-                        <button onClick={() => doPrevious()} className="button btn-cta p-4"><i class="fas fa-arrow-left"></i>&nbsp;Previous</button>
+                        <button onClick={() => doPrevious()} className="button btn-cta p-4"><i className="fas fa-arrow-left"></i>&nbsp;Previous</button>
                     }
                 </div>
                 <div className="has-text-right">
                     {
                         (section < 3) ?
-                            <button onClick={() => doNext()} className="button btn-cta p-4">Next&nbsp;<i class="fas fa-arrow-right"></i></button>
+                            <button onClick={() => doNext()} className="button btn-cta p-4">Next&nbsp;<i className="fas fa-arrow-right"></i></button>
                             :
                             <button form="form_quote" className="button btn-cta is-outline p-4">
                                 Submit
@@ -103,6 +103,11 @@ export default function Quote() {
         if (ov.validate()) {
             //init form data
             const fd = new FormData(e.target);
+            //if others is not included
+            if(!choosedServices.includes('Others')){
+                fd.append('services', JSON.stringify(choosedServices))
+            }
+            
             //init fetch
             fetch("https://server.thetekpreneurs.com/sendProposal.php", {
                 method: "post",
@@ -199,7 +204,7 @@ export default function Quote() {
                                     return (
                                         <div className="mb-2" key={ind}>
                                             <label className="checkbox">
-                                                <input name="services" onChange={handleOnChange} value={val} type="checkbox" />
+                                                <input onChange={handleOnChange} value={val} type="checkbox" />
                                                 &nbsp;{val}
                                             </label>
                                         </div>
