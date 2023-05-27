@@ -180,7 +180,7 @@ export default function Quote() {
                             </div>
                             <div className="field">
                                 <label>Brand/Company Name</label>
-                                <input placeholder="Tekpreneurs" className="input" name="brand_name" octavalidate="R,NAME" id="inp_b_name" />
+                                <input placeholder="Tekpreneurs" className="input" name="brand_name" octavalidate="R,ALPHA_SPACES" id="inp_b_name" />
                             </div>
                             <NextSection />
                         </>
@@ -193,7 +193,7 @@ export default function Quote() {
                             </section>
                             <div className="field">
                                 <label>Preferred Website Name</label>
-                                <input className="input" placeholder="theTekpreneurs" octavalidate="R" name="web_name" id="inp_w_name" />
+                                <input className="input" placeholder="theTekpreneurs" octavalidate="R,ALPHA_ONLY" name="web_name" id="inp_w_name" />
                             </div>
                             <div className="field">
                                 <h5 className="title is-5">What services do you require?</h5>
@@ -211,7 +211,7 @@ export default function Quote() {
                                     (showOthers) && <>
                                         <div className="field">
                                             <label className="label">Others (Please specify)</label>
-                                            <textarea className="textarea" placeholder="I need" name="services"></textarea>
+                                            <textarea id="inp_specify_services" className="textarea" placeholder="I need" name="services"></textarea>
                                         </div>
                                     </>
                                 }
@@ -227,7 +227,7 @@ export default function Quote() {
                             </section>
                             <div className="field">
                                 <label className="label">Quick overview of this project</label>
-                                <textarea id="inp_overview" name="overview" className="textarea" placeholder="I want this website to have..."></textarea>
+                                <textarea id="inp_overview" name="overview" className="textarea" placeholder="I want this website to have..." octavalidate="R,TEXT"></textarea>
                             </div>
                             <div className="field">
                                 <label className="label">Your Budget (In Naira Only)</label>
@@ -237,9 +237,9 @@ export default function Quote() {
                                 <label className="label">How soon are you ready to start</label>
                                 <div class="select is-fullwidth">
                                     <select octavalidate="R,TEXT" name="ready" id="inp_ready">
-                                        <option>This week</option>
-                                        <option>Next week</option>
-                                        <option>Undecided</option>
+                                        <option value="This week">This week</option>
+                                        <option value="Next week">Next week</option>
+                                        <option value="Undecided">Undecided</option>
                                     </select>
                                 </div>
                             </div>
