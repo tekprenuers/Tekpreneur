@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { octaValidate } from "octavalidate-reactjs";
-import { useState } from "react"
+import React, { useState } from "react"
 import { toast } from "react-toastify";
 
 export default function Quote() {
@@ -160,8 +160,7 @@ export default function Quote() {
             </section>
             <section className="section mt-5 mb-5 mx-700 radius-20 has-border">
                 <form id="form_quote" onSubmit={handleSubmit}>
-                    {(section == 1) &&
-                        <>
+                        <section className={(section === 1) ? 'd-block' : 'd-none'}>
                             <section className="mb-5">
                                 <h3 className="title is-3 mb-1">Contact Information</h3>
                                 <p>Tell us more about you</p>
@@ -183,10 +182,9 @@ export default function Quote() {
                                 <input placeholder="Tekpreneurs" className="input" name="brand_name" octavalidate="R,ALPHA_SPACES" id="inp_b_name" />
                             </div>
                             <NextSection />
-                        </>
-                    }
-                    {(section == 2) &&
-                        <>
+                        </section>
+
+                        <section className={(section === 2) ? 'd-block' : 'd-none'}>
                             <section className="mb-5">
                                 <h3 className="title is-3 mb-1">Project Information</h3>
                                 <p>Tell us more about this project</p>
@@ -217,10 +215,9 @@ export default function Quote() {
                                 }
                             </div>
                             <NextSection />
-                        </>
-                    }
-                    {(section == 3) &&
-                        <>
+                        </section>
+                
+                        <section className={(section === 3) ? 'd-block' : 'd-none'}>
                             <section className="mb-5">
                                 <h3 className="title is-3 mb-1">Budget</h3>
                                 <p>Tell us about your budget</p>
@@ -250,8 +247,7 @@ export default function Quote() {
                                 </label>
                             </div>
                             <NextSection />
-                        </>
-                    }
+                        </section>
                 </form>
             </section>
         </main>

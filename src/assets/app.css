@@ -116,9 +116,11 @@ img.why-woman {
 
 /*Utilities*/
 .d-none{
-    display: none;
+    display: none !important;
 }
-
+.d-block{
+    display: block !important;
+}
 .shadow{
     box-shadow: 0px 0px 8px #ddd;
 }
