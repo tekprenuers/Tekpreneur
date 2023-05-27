@@ -1,4 +1,4 @@
-import { Outlet,  useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import React from 'react'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -11,10 +11,10 @@ export default function Navbar() {
         document.querySelector('.navbar-burger')?.classList.toggle('is-active');
         document.querySelector('.navbar-menu')?.classList.toggle('is-active');
     }
-    // const unToggleMobileNav = () => {
-    //     document.querySelector('.navbar-burger')?.classList.remove('is-active');
-    //     document.querySelector('.navbar-menu')?.classList.remove('is-active');
-    // }
+    const unToggleMobileNav = () => {
+        document.querySelector('.navbar-burger')?.classList.remove('is-active');
+        document.querySelector('.navbar-menu')?.classList.remove('is-active');
+    }
     //check for changes in the variable
     React.useEffect(() => {
         if (location) {
@@ -38,9 +38,9 @@ export default function Navbar() {
 
     // 👇️ scroll to top on page change
     React.useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
-    
+
     return (
         <>
             <ToastContainer
@@ -66,9 +66,11 @@ export default function Navbar() {
                         <span aria-hidden="true"></span>
                     </a>
                 </div>
-
                 <div id="NavContent" className="navbar-menu">
                     <div className="navbar-end">
+                        <Link to="/home" className="navbar-item" onClick={unToggleMobileNav}>
+                            Home
+                        </Link>
                         <div className="navbar-item">
                             <a href="/quote" className="button is-rounded btn-nav">
                                 Get A Quote

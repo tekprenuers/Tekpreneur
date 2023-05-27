@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unknown-property */
+import { octaValidate } from "octavalidate-reactjs";
 import { useState } from "react"
+import { toast } from "react-toastify";
 
 export default function Quote() {
 
@@ -15,19 +17,19 @@ export default function Quote() {
             if (section > 1) return setSection(section - 1)
         }
         return <div className="field">
-            <div className="columns">
-                <div className="column has-text-left">
+            <div className="is-flex" style={{ "justify-content": "space-between" }}>
+                <div className="has-text-left">
                     {
                         (section > 1) &&
                         <button onClick={() => doPrevious()} className="button btn-cta p-4"><i class="fas fa-arrow-left"></i>&nbsp;Previous</button>
                     }
                 </div>
-                <div className="column has-text-right">
+                <div className="has-text-right">
                     {
                         (section < 3) ?
                             <button onClick={() => doNext()} className="button btn-cta p-4">Next&nbsp;<i class="fas fa-arrow-right"></i></button>
                             :
-                            <button form="form_quote" className="button btn-cta p-4">
+                            <button form="form_quote" className="button btn-cta is-outline p-4">
                                 Submit
                             </button>
                     }
@@ -46,22 +48,22 @@ export default function Quote() {
             console.log('not checked others')
             choosedServices.push(e.target.value);
             //Hide others specification
-            setShowOthers(false);            
+            setShowOthers(false);
             //reset the checkbox
-            document.querySelectorAll('input[type="checkbox"][name="services"]').forEach( (el) => {
-                if(el.checked && el.value == "Others"){
+            document.querySelectorAll('input[type="checkbox"][name="services"]').forEach((el) => {
+                if (el.checked && el.value == "Others") {
                     el.checked = false;
                 }
             })
-        } else if(e.target.checked && e.target.value === "Others"){
+        } else if (e.target.checked && e.target.value === "Others") {
             console.log('checked others')
             //if others is checked, empty the array
             choosedServices = [];
             //show others specification
             setShowOthers(true);
             //reset the checkbox
-            document.querySelectorAll('input[type="checkbox"][name="services"]').forEach( (el) => {
-                if(el.checked && el.value !== "Others"){
+            document.querySelectorAll('input[type="checkbox"][name="services"]').forEach((el) => {
+                if (el.checked && el.value !== "Others") {
                     el.checked = false;
                 }
             })
@@ -79,33 +81,88 @@ export default function Quote() {
         }
         console.log(choosedServices)
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const btn = e.target.querySelector('button[form=' + e.target.id + ']');
+        //remove innertext
+        btn.innerText = "";
+        //set loading class
+        btn.classList.add('is-loading');
+        //disable the button
+        btn.setAttribute('disabled', 'disabled');
+        //prevent the page from reloading
+        e.preventDefault();
+        // e.target.classList.toggle("is-loading");
+        const ov = new octaValidate(e.target.id, {
+            strictMode: true
+        })
+
+        ov.customRule('PHONE', `^(\\+?234|0)([789]\\d{9})$`, 'You must provide a valid Nigerian Phone Number');
+        if (ov.validate()) {
+            //init form data
+            const fd = new FormData(e.target);
+            //init fetch
+            fetch("https://server.thetekpreneurs.com/sendProposal.php", {
+                method: "post",
+                mode: "cors",
+                body: fd
+            })
+                .then(res => res.json())
+                .then((res) => {
+                    if (res.success) {
+                        toast.success(res.data.message);
+                        //add innertext
+                        btn.innerText = "Submitted!";
+                        //remove loading class
+                        btn.classList.remove('is-loading');
+                    } else {
+                        toast.error(res.data.message);
+                        //add innertext
+                        btn.innerText = "Try again";
+                        //remove loading class
+                        btn.classList.remove('is-loading');
+                        //remove attribute
+                        btn.removeAttribute('disabled');
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                    toast.error("Please check your network connection and try again");
+                    //add innertext
+                    btn.innerText = "Try again";
+                    //remove loading class
+                    btn.classList.remove('is-loading');
+                    //remove attribute
+                    btn.removeAttribute('disabled');
+                })
+        } else {
+            toast.error("Form validation failed!");
+            //add innertext
+            btn.innerText = "Try again";
+            //remove loading class
+            btn.classList.remove('is-loading');
+            //remove attribute
+            btn.removeAttribute('disabled');
+        }
+    }
     return (
         <main>
-            <section className="hero">
-                <div className="hero-body p-0">
-                    <div className="container is-fluid columns is-flex-direction-row-reverse" style={{ top: '2%' }}>
-                        <div className="column has-text-centered">
-                            <img src="/hero-man.png" />
-                        </div>
-                        <div className="column is-align-self-center">
-                            <section className="section-content">
-                                <h1 className="title home-title">Promote Your Business With <span className="text-primary">Tech</span></h1>
-                            </section>
-                            <section className="section-content">
-                                <p className="content text-gray">Support small business and join the nation-wide movement to encourage commercial support for the millions of minority owned businesses helping world economy.</p>
-                            </section>
-                            <section className="section-content">
-                                <a href="/quote" className="button btn-cta is-rounded fw-bold">Get A Quote</a>
-                            </section>
-                        </div>
+            <section className="hero is-medium not-home bg-pri-dark">
+                <div className="hero-body">
+                    <div className="container m-none" style={{ "top": "30%" }}>
+                        <section className="section-content">
+                            <h1 className="title home-title has-text-light">Get A Quote</h1>
+                            <p>Let us know the services you need for this project and we will tell you the cost estimate of your project.</p>
+                        </section>
                     </div>
                 </div>
             </section>
-            <section className="section mt-5 mb-5 mx-700 radius-20 shadow">
-                <form id="form_quote">
+            <section className="section mt-5 mb-5 mx-700 radius-20 has-border">
+                <form id="form_quote" onSubmit={handleSubmit}>
                     {(section == 1) &&
                         <>
-                            <section className="section-content">
+                            <section className="mb-5">
                                 <h3 className="title is-3 mb-1">Contact Information</h3>
                                 <p>Tell us more about you</p>
                             </section>
@@ -118,7 +175,7 @@ export default function Quote() {
                                 <input placeholder="hello@thetekpreneurs.com" className="input" name="email" octavalidate="R,EMAIL" id="inp_email" />
                             </div>
                             <div className="field">
-                                <label>Phone Number</label>
+                                <label>Phone Number (Preferably WhatsApp)</label>
                                 <input placeholder="+234XXXXXXXXXX" className="input" name="phone" octavalidate="R,PHONE" id="inp_phone" />
                             </div>
                             <div className="field">
@@ -130,7 +187,7 @@ export default function Quote() {
                     }
                     {(section == 2) &&
                         <>
-                            <section className="section-content">
+                            <section className="mb-5">
                                 <h3 className="title is-3 mb-1">Project Information</h3>
                                 <p>Tell us more about this project</p>
                             </section>
@@ -151,7 +208,6 @@ export default function Quote() {
                                     )
                                 })}
                                 {
-
                                     (showOthers) && <>
                                         <div className="field">
                                             <label className="label">Others (Please specify)</label>
@@ -165,18 +221,22 @@ export default function Quote() {
                     }
                     {(section == 3) &&
                         <>
+                            <section className="mb-5">
+                                <h3 className="title is-3 mb-1">Budget</h3>
+                                <p>Tell us about your budget</p>
+                            </section>
                             <div className="field">
                                 <label className="label">Quick overview of this project</label>
-                                <textarea className="textarea" placeholder="I want this website to..."></textarea>
+                                <textarea id="inp_overview" name="overview" className="textarea" placeholder="I want this website to have..."></textarea>
                             </div>
                             <div className="field">
                                 <label className="label">Your Budget (In Naira Only)</label>
-                                <input className="input" octavalidate="R,NAME" id="inp_name" />
+                                <input id="inp_budget" name="budget" placeholder="N200,000" className="input" octavalidate="R" />
                             </div>
                             <div className="field mb-3">
                                 <label className="label">How soon are you ready to start</label>
                                 <div class="select is-fullwidth">
-                                    <select>
+                                    <select octavalidate="R,TEXT" name="ready" id="inp_ready">
                                         <option>This week</option>
                                         <option>Next week</option>
                                         <option>Undecided</option>
@@ -185,7 +245,7 @@ export default function Quote() {
                             </div>
                             <div className="mb-5">
                                 <label className="checkbox">
-                                    <input type="checkbox" />
+                                    <input name="pawb" type="checkbox" value="true" />
                                     &nbsp;Sign me up for the PAY AS WE BUILD scheme
                                 </label>
                             </div>

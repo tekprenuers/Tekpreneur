@@ -23,6 +23,7 @@ div#root {
 
 /*Buttons*/
 .button.btn-nav {
+    border-radius: 5px;
     border: 2px solid var(--pri);
     color: var(--pri) !important;
 }
@@ -32,6 +33,15 @@ div#root {
     border: 2px solid var(--pri);
     background-color: var(--pri);
     color: #fff !important;
+    padding: 25px 40px;
+    font-family: inherit !important;
+}
+
+.button.btn-cta.is-outline {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--pri);
+    background-color: #fff !important;
+    color: var(--pri) !important;
     padding: 25px 40px;
     font-family: inherit !important;
 }
@@ -157,11 +167,21 @@ img.why-woman {
     border-radius: 20px;
 }
 
+.has-border{
+    border:1px solid !important;
+}
+
 .mx-700{
     max-width: 700px !important;
     margin: auto;
 }
-
+.hero.not-home{
+    min-height: 50vh !important;
+}
+.hero.not-home .hero-body{
+    align-items: center;
+    display: flex;
+}
 footer a:has(i.social){
     color: inherit !important;
     font-size: 1.5rem;

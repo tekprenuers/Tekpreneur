@@ -7,7 +7,7 @@ import { toast } from "react-toastify"
 export default function Home() {
 
     const handleSubmit = (e) => {
-        const btn = e.target.querySelector('button[form='+e.target.id+']');
+        const btn = e.target.querySelector('button[form=' + e.target.id + ']');
         //remove innertext
         btn.innerText = "";
         //set loading class
@@ -25,40 +25,40 @@ export default function Home() {
             const fd = new FormData(e.target);
             //init fetch
             fetch("https://server.thetekpreneurs.com/sendMail.php", {
-                method : "post",
-                mode : "cors",
-                body : fd
+                method: "post",
+                mode: "cors",
+                body: fd
             })
-            .then(res => res.json())
-            .then((res) => {
-                if(res.success){
-                    toast.success(res.data.message);
-                    //add innertext
-                    btn.innerText = "Sent!";
-                    //remove loading class
-                    btn.classList.remove('is-loading');
-                }else{
-                    toast.error(res.data.message);
+                .then(res => res.json())
+                .then((res) => {
+                    if (res.success) {
+                        toast.success(res.data.message);
+                        //add innertext
+                        btn.innerText = "Sent!";
+                        //remove loading class
+                        btn.classList.remove('is-loading');
+                    } else {
+                        toast.error(res.data.message);
+                        //add innertext
+                        btn.innerText = "Try again";
+                        //remove loading class
+                        btn.classList.remove('is-loading');
+                        //remove attribute
+                        btn.removeAttribute('disabled');
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                    toast.error("Please check your network connection and try again");
                     //add innertext
                     btn.innerText = "Try again";
                     //remove loading class
                     btn.classList.remove('is-loading');
                     //remove attribute
                     btn.removeAttribute('disabled');
-                }
-            }).catch((err) => {
-                console.log(err);
-                toast.error("Please check your network connection and try again");
-                 //add innertext
-                btn.innerText = "Try again";
-                //remove loading class
-                btn.classList.remove('is-loading');
-                //remove attribute
-                btn.removeAttribute('disabled');
-            })
+                })
         } else {
             toast.error("Form validation failed!");
-             //add innertext
+            //add innertext
             btn.innerText = "Try again";
             //remove loading class
             btn.classList.remove('is-loading');
@@ -163,12 +163,9 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="section">
-                <div className="columns is-sflex-direction-row-reverse">
-                    <div className="column has-text-centered is-align-self-center">
-                        <img className="mx-350" src="/hero-man.png" />
-                    </div>
-                    <div className="column is-align-self-center">
+            <div className="container is-fluid">
+                <section className="section px-0">
+                    <div className="container p-4 has-border mx-700 radius-20">
                         <section className="section-content">
                             <p className="text-tertiary mb-3">CONTACT US</p>
                             <h3 className="title is-3 fw-bolder">Let&apos;s Collaborate Now!</h3>
@@ -193,8 +190,9 @@ export default function Home() {
                             </form>
                         </section>
                     </div>
-                </div>
-            </section>
+                </section>
+
+            </div>
             <section className="section is-gray">
                 <div className="columns is-flex-direction-row-reverse">
                     <div className="column has-text-centered">
@@ -208,9 +206,9 @@ export default function Home() {
                         <section className="section-content">
                             <p>Are you feeling unsure about what exactly you need? Don&apos;t worry, we&apos;ve got you covered! Our team of experts is here to help you navigate through the possibilities and find the perfect solution tailored to your requirements.</p>
                         </section>
-                            <section className="section-content">
-                                <a href="/quote" className="button btn-cta fw-bold is-rounded">Get A Quote</a>
-                            </section>
+                        <section className="section-content">
+                            <a href="/quote" className="button btn-cta fw-bold is-rounded">Get A Quote</a>
+                        </section>
                     </div>
                 </div>
             </section>
