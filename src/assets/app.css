@@ -109,6 +109,9 @@ img.why-woman {
     display: none;
 }
 
+.shadow{
+    box-shadow: 0px 0px 8px #ddd;
+}
 .p-0 {
     padding: 0 !important;
 }
@@ -149,6 +152,14 @@ img.why-woman {
 
 .mx-350{
     max-width: 350px !important;
+}
+.radius-20{
+    border-radius: 20px;
+}
+
+.mx-700{
+    max-width: 700px !important;
+    margin: auto;
 }
 
 footer a:has(i.social){

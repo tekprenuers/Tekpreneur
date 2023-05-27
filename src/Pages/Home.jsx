@@ -66,6 +66,7 @@ export default function Home() {
             btn.removeAttribute('disabled');
         }
     }
+
     return (
         <main>
             <section className="hero">
