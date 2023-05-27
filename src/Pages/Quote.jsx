@@ -3,6 +3,11 @@ import { octaValidate } from "octavalidate-reactjs";
 import { useState } from "react"
 import { toast } from "react-toastify";
 
+
+const services = ["Web Design & Development", "Search Engine Optimization", "Brand Design & Development", "Social Media Management", "E-commerce", "Others"];
+
+let choosedServices = [];
+
 export default function Quote() {
 
     const [section, setSection] = useState(1);
@@ -21,15 +26,15 @@ export default function Quote() {
                 <div className="has-text-left">
                     {
                         (section > 1) &&
-                        <button onClick={() => doPrevious()} className="button btn-cta p-4"><i className="fas fa-arrow-left"></i>&nbsp;Previous</button>
+                        <button type="button" onClick={() => doPrevious()} className="button btn-cta p-4"><i className="fas fa-arrow-left"></i>&nbsp;Previous</button>
                     }
                 </div>
                 <div className="has-text-right">
                     {
                         (section < 3) ?
-                            <button onClick={() => doNext()} className="button btn-cta p-4">Next&nbsp;<i className="fas fa-arrow-right"></i></button>
+                            <button type="button" onClick={() => doNext()} className="button btn-cta p-4">Next&nbsp;<i className="fas fa-arrow-right"></i></button>
                             :
-                            <button form="form_quote" className="button btn-cta is-outline p-4">
+                            <button type="submit" form="form_quote" className="button btn-cta is-outline p-4">
                                 Submit
                             </button>
                     }
@@ -38,31 +43,27 @@ export default function Quote() {
         </div>
     }
 
-    const services = ["Web Design & Development", "Search Engine Optimization", "Brand Design & Development", "Social Media Management", "E-commerce", "Others"];
-
-    let choosedServices = [];
-
     const handleOnChange = (e) => {
         //handle check
         if (e.target.checked && e.target.value !== "Others") {
-            console.log('not checked others')
+            // console.log('not checked others')
             choosedServices.push(e.target.value);
             //Hide others specification
             setShowOthers(false);
             //reset the checkbox
-            document.querySelectorAll('input[type="checkbox"][name="services"]').forEach((el) => {
+            document.querySelectorAll('input[type="checkbox"][data-tick="services"]').forEach((el) => {
                 if (el.checked && el.value == "Others") {
                     el.checked = false;
                 }
             })
         } else if (e.target.checked && e.target.value === "Others") {
-            console.log('checked others')
+            // console.log('checked others')
             //if others is checked, empty the array
             choosedServices = [];
             //show others specification
             setShowOthers(true);
             //reset the checkbox
-            document.querySelectorAll('input[type="checkbox"][name="services"]').forEach((el) => {
+            document.querySelectorAll('input[type="checkbox"][data-tick="services"]').forEach((el) => {
                 if (el.checked && el.value !== "Others") {
                     el.checked = false;
                 }
@@ -75,16 +76,14 @@ export default function Quote() {
             const index = choosedServices.findIndex((v) => {
                 return v == e.target.value
             })
-            console.log("unchecked", choosedServices[index])
+            // console.log("unchecked", choosedServices[index])
             //remove item at that index
             choosedServices.splice(index, 1)
         }
-        console.log(choosedServices)
+        // console.log(choosedServices)
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-
         const btn = e.target.querySelector('button[form=' + e.target.id + ']');
         //remove innertext
         btn.innerText = "";
@@ -92,8 +91,10 @@ export default function Quote() {
         btn.classList.add('is-loading');
         //disable the button
         btn.setAttribute('disabled', 'disabled');
+        
         //prevent the page from reloading
         e.preventDefault();
+
         // e.target.classList.toggle("is-loading");
         const ov = new octaValidate(e.target.id, {
             strictMode: true
@@ -204,7 +205,7 @@ export default function Quote() {
                                     return (
                                         <div className="mb-2" key={ind}>
                                             <label className="checkbox">
-                                                <input onChange={handleOnChange} value={val} type="checkbox" />
+                                                <input data-tick="services" onChange={handleOnChange} value={val} type="checkbox" />
                                                 &nbsp;{val}
                                             </label>
                                         </div>
